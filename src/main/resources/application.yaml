@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: spring-security
+  datasource:
+    dialect: mysql
+    url: 'jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&allowMultiQueries=true'
+    username: 'root'
+    password: '123456'
+    driver-class-name: 'com.mysql.jdbc.Driver'
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 1
+    minIdle : 5
+    maxActive: 10
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,slf4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+    monitorUserName: admin
+    monitorPassword: admin
+    resetEnable: false
+    allow:
+    deny:
+    exclusions:
+
+
+server:
+  port: 8765
+
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
+  typeAliasesPackage: com.jk51.springsecurity.DAO
+  configuration:
+      callSettersOnNulls: true
+
+//jwt token 设置
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 604800
+
+
+
+
